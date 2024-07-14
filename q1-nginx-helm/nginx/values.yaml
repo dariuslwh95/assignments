@@ -80,7 +80,7 @@ diagnosticMode:
 image:
   registry: docker.io
   repository: bitnami/nginx
-  tag: latest
+  tag: 1.27.0-debian-12-r3
   digest: ""
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -620,10 +620,10 @@ staticSitePVC: ""
 service:
   ## @param service.type Service type
   ##
-  type: NodePort
-  # ## @param service.ports.http Service HTTP port
-  # ## @param service.ports.https Service HTTPS port
-  # ##
+  type: LoadBalancer
+  ## @param service.ports.http Service HTTP port
+  ## @param service.ports.https Service HTTPS port
+  ##
   ports:
     http: 80
     https: 443
@@ -632,8 +632,8 @@ service:
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
   nodePorts:
-    http: 30080
-    https: 30081
+    http: ""
+    https: ""
   ## @param service.targetPort [object] Target port reference value for the Loadbalancer service types can be specified explicitly.
   ## Listeners for the Loadbalancer can be custom mapped to the http or https service.
   ## Example: Mapping the https listener to targetPort http [http: https]

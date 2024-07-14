@@ -1,0 +1,8 @@
+---
+- name: Install Prometheus Node Exporter
+  hosts: ubuntu_vms
+  become: yes
+  vars_files:
+    - ../vault/secrets.yml
+  roles:
+    - node_exporter
